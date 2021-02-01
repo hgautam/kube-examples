@@ -3,6 +3,9 @@
 We will look at the examples of accessing a pod and getting access into a container running inside a pod.
 This section shows how to use **kubectl exec** to get a shell to a running container
 
+[Reference Kubernetes Documentation](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
+
+#### Getting access to container terminal inside a POD
 ```bash
 # apply yaml
 kubectl apply -f shell-demo.yaml
@@ -16,4 +19,14 @@ apt-get update; apt-get install curl
 # verify
 root@minikube:/# curl http://localhost/
 Hello shell demo
+```
+#### Running individual commands in a container
+```bash
+# print env variables on the container
+kubectl exec shell-demo -- env
+```
+#### Opening a shell when a Pod has more than one container
+```bash
+# If a Pod has more than one container, use --container or -c to specify a container in the kubectl exec command.
+kubectl exec -i -t shell-demo --container nginx -- /bin/bash
 ```
