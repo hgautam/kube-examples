@@ -36,4 +36,10 @@ kubectl describe service example-service | grep NodePort
 curl http://<node-ip:node-port>
 curl  http://192.168.64.88:30276
 Hello Kubernetes!
+
+# Delete the Service
+kubectl delete service example-service
+
+# Delete the deployment
+kubectl delete deployment hello-world
 ```
