@@ -16,4 +16,15 @@ kubectl config --kubeconfig=config-demo set-credentials experimenter --username=
 kubectl config --kubeconfig=config-demo set-context dev-frontend --cluster=development --namespace=frontend --user=developer
 kubectl config --kubeconfig=config-demo set-context dev-storage --cluster=development --namespace=storage --user=developer
 kubectl config --kubeconfig=config-demo set-context exp-scratch --cluster=scratch --namespace=default --user=experimenter
+
+# To view the config
+kubectl config --kubeconfig=config-demo view
+
+# Set the current context
+kubectl config --kubeconfig=config-demo use-context dev-frontend
+
+# To see only the configuration information associated with the current context, use the --minify flag
+kubectl config --kubeconfig=config-demo view --minify
+
+# 
 ```
