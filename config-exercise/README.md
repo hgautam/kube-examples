@@ -26,5 +26,11 @@ kubectl config --kubeconfig=config-demo use-context dev-frontend
 # To see only the configuration information associated with the current context, use the --minify flag
 kubectl config --kubeconfig=config-demo view --minify
 
-# 
+# Change the current context to exp-scratch
+kubectl config --kubeconfig=config-demo use-context exp-scratch
+kubectl config --kubeconfig=config-demo view --minify
+
+# Change the current context to dev-storage
+kubectl config --kubeconfig=config-demo use-context dev-storage
+kubectl config --kubeconfig=config-demo view --minify
 ```
