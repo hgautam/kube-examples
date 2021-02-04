@@ -20,4 +20,20 @@ kubectl apply -f backend-service.yaml
 
 # View service info
 kubectl describe service hello
+
+# Create the frontend Deployment and Service
+kubectl apply -f frontend-deployment.yaml
+kubectl apply -f frontend-service.yaml
+
+# Get the ip and port
+kubectl get service frontend --watch
+
+# validate
+curl http://<node-ip:node-port>
+curl http://192.168.64.88:32688
+{"message":"Hello"}
+
+# clean up
+kubectl delete services frontend backend
+kubectl delete deployment frontend backend
 ```
