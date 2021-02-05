@@ -10,6 +10,10 @@ This section shows how to use **kubectl exec** to get a shell to a running conta
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -n mynamespace -o yaml > pod.yaml
 kubectl create -f pod.yaml
 ```
+#### Generate yaml to pass env command
+```bash
+kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- env > envpod.yaml
+```
 
 #### Getting access to container terminal inside a POD
 ```bash
