@@ -2,6 +2,11 @@
 
 [Redis server](https://kubernetes.io/docs/tutorials/configuration/configure-redis-using-configmap/) based on a config map
 
+Make sure only the following files are in the dir:
+redis-config
+redis-pod.yaml
+kustomization.yaml
+
 ```bash
 # create a Kustomize yaml
 cat <<EOF >./kustomization.yaml
