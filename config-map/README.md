@@ -37,3 +37,11 @@ kubectl exec -it redis -- redis-cli
 kubectl delete pod redis
 kubectl delete configmap example-redis-config-dgh9dg555m
 ```
+#### Pod that uses configmap from env
+```bash
+kubectl create cm options --from-literal=var5=val5
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > config-pod.yaml
+kubectl create -f config-pod.yaml
+# to validate
+kubectl exec -it nginx -- env | grep option
+```
