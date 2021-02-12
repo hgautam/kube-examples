@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   name: busybox
 spec:
+  #Pod will be killed after being active for 30 seconds
   activeDeadlineSeconds: 30
   template:
     metadata:
