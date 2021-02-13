@@ -54,3 +54,13 @@ kubectl exec -it nginx -- env
 kubectl delete pod nginx
 kubectl delete cm anotherone
 ```
+#### Mount a Pod as volume
+```bash
+kubectl create cm cmvolume --from-literal=var8=val8 --from-literal=var9=val9
+kubectl run nginx --image=nginx --restart=Never -o yaml --dry-run=client > vol-pod.yaml
+kubectl create -f vol-pod.yaml
+kubectl exec -it nginx -- /bin/sh
+cd /etc/lala
+ls # will show var8 var9
+cat var8 # will show val8
+```
