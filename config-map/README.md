@@ -45,3 +45,12 @@ kubectl create -f config-pod.yaml
 # to validate
 kubectl exec -it nginx -- env | grep option
 ```
+#### Another variant of Pod that uses configmap
+```bash
+kubectl create cm anotherone --from-literal=var6=val6 --from-literal=var7=val7
+kubectl run --restart=Never nginx --image=nginx -o yaml --dry-run=client > env-pod.yaml
+kubectl create -f pod.yaml
+kubectl exec -it nginx -- env 
+kubectl delete pod nginx
+kubectl delete cm anotherone
+```
