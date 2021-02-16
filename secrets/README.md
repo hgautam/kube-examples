@@ -20,3 +20,12 @@ kubectl exec -it nginx -- /bin/bash
 ls /etc/foo
 cat username # this should print admin
 ```
+#### Mount the variable 'username' from secret mysecret2 onto a new nginx pod in env variable called 'USERNAME'
+```bash
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > pod2.yaml
+# apply the pod
+kubectl apply -f pod2.yaml
+
+# kubectl exec
+kubectl exec -it nginx -- env | grep USERNAME
+```
