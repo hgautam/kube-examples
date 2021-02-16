@@ -24,3 +24,14 @@ kubectl delete -f pod.yaml
 ```bash
 kubectl explain pod.spec.containers.livenessProbe # get the exact names
 ```
+#### Create an nginx pod (that includes port 80) with an HTTP readinessProbe on path '/' on port 80. Again, run it, check the readinessProbe
+```bash
+# create yaml
+kubectl run nginx --image=nginx --restart=Never --port=80 --dry-run=client -o yaml > pod2.yaml
+
+# apply yaml
+kubectl apply -f pod2.yaml
+
+# clean up
+kubectl delete -f pod2.yaml
+```
