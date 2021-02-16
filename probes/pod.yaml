@@ -11,6 +11,8 @@ spec:
     name: nginx
     resources: {}
     livenessProbe: # our probe
+      initialDelaySeconds: 5 # add this line
+      periodSeconds: 5 # add this line as well
       exec: # add this line
         command: # command definition
         - ls # ls command
