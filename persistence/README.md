@@ -29,4 +29,8 @@ cat pvc.yaml
 # apply the yaml
 kubectl apply -f pvc.yaml
 ```
-
+#### Create a busybox pod with command 'sleep 3600', save it on pod.yaml. Mount the PersistentVolumeClaim to '/etc/foo'. Connect to the 'busybox' pod, and copy the '/etc/passwd' file to '/etc/foo/passwd'
+```bash
+# create pod
+kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml -- /bin/sh -c 'sleep 3600' > pod1.yaml
+```
