@@ -40,3 +40,7 @@ kubectl create -f pod1.yaml
 # Connect to the pod and copy '/etc/passwd' to '/etc/foo/passwd':
 kubectl exec busybox -it -- cp /etc/passwd /etc/foo/passwd
 ```
+
+#### Create a second pod which is identical with the one you just created (you can easily do it by changing the 'name' property on pod1.yaml). Connect to it and verify that '/etc/foo' contains the 'passwd' file. Delete pods to cleanup. Note: If you can't see the file from the second pod, can you figure out why? What would you do to fix that?
+```bash
+```
