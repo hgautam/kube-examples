@@ -33,4 +33,10 @@ kubectl apply -f pvc.yaml
 ```bash
 # create pod
 kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml -- /bin/sh -c 'sleep 3600' > pod1.yaml
+
+# apply the pod
+kubectl create -f pod1.yaml
+
+# Connect to the pod and copy '/etc/passwd' to '/etc/foo/passwd':
+kubectl exec busybox -it -- cp /etc/passwd /etc/foo/passwd
 ```
