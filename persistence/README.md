@@ -15,7 +15,7 @@ kubectl exec -it busybox -c busybox2 -- /bin/sh
 #### Create a PersistentVolume of 10Gi, called 'myvolume'. Make it have accessMode of 'ReadWriteOnce' and 'ReadWriteMany', storageClassName 'normal', mounted on hostPath '/etc/foo'. Save it on pv.yaml, add it to the cluster. Show the PersistentVolumes that exist on the cluster
 ```bash
 # create pv
-kubectl create -f pv.yaml
+kubectl apply -f pv.yaml
 
 # get pv
 kubectl get pv
@@ -35,12 +35,20 @@ kubectl apply -f pvc.yaml
 kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml -- /bin/sh -c 'sleep 3600' > pod1.yaml
 
 # apply the pod
-kubectl create -f pod1.yaml
+kubectl apply -f pod1.yaml
 
 # Connect to the pod and copy '/etc/passwd' to '/etc/foo/passwd':
 kubectl exec busybox -it -- cp /etc/passwd /etc/foo/passwd
-```
 
-#### Create a second pod which is identical with the one you just created (you can easily do it by changing the 'name' property on pod1.yaml). Connect to it and verify that '/etc/foo' contains the 'passwd' file. Delete pods to cleanup. Note: If you can't see the file from the second pod, can you figure out why? What would you do to fix that?
+# read the contents
+kubectl exec busybox -- cat /etc/foo/passwd
+```
+#### Create a busybox pod with 'sleep 3600' as arguments. Copy '/etc/passwd' from the pod to your local folder
 ```bash
+kubectl run busybox --image=busybox --restart=Never -- /bin/bash -c 'sleep 3600'
+
+# copy /etc/passwd to local dir
+kubectl cp busybox:etc/passwd ./passwd
+
+cat passwd
 ```
