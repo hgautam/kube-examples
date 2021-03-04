@@ -5,7 +5,7 @@ This section shows how to use **kubectl exec** to get a shell to a running conta
 
 [Reference Kubernetes Documentation](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
 
-[Documentation on resources](https://kubernetes.io/docs/concepts/policy/limit-range/)
+[Documentation on resources quotas and limits](https://kubernetes.io/docs/concepts/policy/limit-range/)
 
 #### Generate yaml
 ```bash
