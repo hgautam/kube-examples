@@ -5,6 +5,8 @@ This section shows how to use **kubectl exec** to get a shell to a running conta
 
 [Reference Kubernetes Documentation](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
 
+[Documentation on resources](https://kubernetes.io/docs/concepts/policy/limit-range/)
+
 #### Generate yaml
 ```bash
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -n mynamespace -o yaml > pod.yaml
