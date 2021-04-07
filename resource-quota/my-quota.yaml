@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  creationTimestamp: null
+  name: my-quota
+  namespace: myspace
+spec:
+  hard:
+    limit.cpu: "2"
+    limit.memory: 2G
+    request.cpu: "1"
+    requests.memory: 1G
+status: {}
