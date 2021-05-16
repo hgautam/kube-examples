@@ -45,8 +45,10 @@ kubectl exec -i -t shell-demo --container nginx -- /bin/bash
 #### Create multiple containers in a Pod
 ```bash
 # apply multi-pod container yaml
-# create vs apply: create is used only for creating pods. apply is used for creating other sources like deployment, RS etc
+# create vs apply: create is used only for creating pods. apply is used for creating other sources 
+# like deployment, RS etc
 kubectl create -f multi-container.yaml
 # execute a command inside a container busybox2 part of pod busybox
 kubectl exec -it busybox -c busybox2 -- ls
 ```
+
