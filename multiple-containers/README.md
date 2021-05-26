@@ -26,3 +26,4 @@ kubectl exec -it busybox -c busybox2 -- ls
 # you can do some cleanup
 kubectl delete po busybox
 ```
+#### https://github.com/bmuschko/ckad-prep/blob/master/3-multi-container-pods.md#implementing-the-adapter-pattern
