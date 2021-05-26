@@ -27,9 +27,26 @@ kubectl exec -it busybox -c busybox2 -- ls
 kubectl delete po busybox
 ```
 #### **Init-container example:** Create pod with nginx container exposed at port 80. Add a busybox init container which downloads a page using "wget -O /work-dir/index.html http://neverssl.com/online". Make a volume of type emptyDir and mount it in both containers. For the nginx container, mount it on "/usr/share/nginx/html" and for the initcontainer, mount it on "/work-dir".
+Empty dir doc reference: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir-configuration-example
 ```bash
 # create a pod
 kubectl run nginx --image=nginx --restart=Never --port=80 --dry-run=client -o yaml > init-container.yaml
+
+# make empty dir volume
+# add the following snippets to the yaml
+volumes:
+  - name: cache-volume
+    emptyDir: {}
+# add init container
+# apply the pod
+kubectl create -f init-container.yaml
+
+# get the IP
+kubectl get po nginx -o wide
+# get the IP of the created pod and create a busybox pod and run "wget -O- IP"
+kubectl run busybox --image=busybox --restart=Never --rm -- /bin/sh -c "wget -O- 172.17.0.3" 
+# you can do some cleanup
+kubectl delete po box
 ```
 
 #### https://github.com/bmuschko/ckad-prep/blob/master/3-multi-container-pods.md#implementing-the-adapter-pattern
