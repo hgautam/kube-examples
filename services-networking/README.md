@@ -1,7 +1,7 @@
-### Service and Networking
+### Services and Networking
 
-[Kubernetes documentation reference](https://kubernetes.io/docs/concepts/services-networking/)
-[Network policies reference](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+* [Kubernetes documentation reference](https://kubernetes.io/docs/concepts/services-networking/)
+* [Network policies reference](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 
 ```bash
 # Create a pod with image nginx called nginx and expose its port 80
