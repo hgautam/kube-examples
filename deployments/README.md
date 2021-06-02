@@ -1,5 +1,5 @@
 ### K8s deployment examples
-
+[Documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 Based on examples in Kubernetes documentation
 
 ```bash
