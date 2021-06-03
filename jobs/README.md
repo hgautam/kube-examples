@@ -11,3 +11,16 @@ kubectl get po
 kubectl logs po-*
 kubectl delete job pi
 ```
+
+#### Create a job but ensure that it will be automatically terminated by kubernetes if it takes more than 30 seconds to execute
+
+```bash
+kubectl create job busybox --image=busybox --dry-run=client -o yaml -- /bin/sh -c 'while true; do echo hello; sleep 10;done' > job.yaml
+vi job.yaml
+# add add the following line:
+Add job.spec.activeDeadlineSeconds=30
+
+kubectl apply -f job.yaml
+kubectl logs busybox-* -f
+kubectl delete job busybox
+```
