@@ -24,3 +24,15 @@ kubectl apply -f job.yaml
 kubectl logs busybox-* -f
 kubectl delete job busybox
 ```
+#### Create the same job, but make it run 5 parallel times
+
+```bash
+kubectl create job busybox --image=busybox --dry-run=client -o yaml -- /bin/sh -c 'while true; do echo hello; sleep 10;done' > job.yaml
+vi job-parallelism.yaml
+# add the following line:
+parallelism: 5
+
+kubectl apply -f job-parallelism.yaml
+kubectl logs busybox-* -f
+kubectl delete job busybox
+```
