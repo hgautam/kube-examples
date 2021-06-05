@@ -67,3 +67,15 @@ ls # will show var8 var9
 cat var8 # will show val8
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/2-configuration.md#configuring-a-pod-to-use-a-configmap
+
+#### Part 1: create a config map and use it in a pod
+```bash
+# create a config.txt with couple of vars
+# create configmap resource
+kubectl create configmap db-config --from-file=config.txt
+# create a nginx image based pod that will use this configmap
+kubectl run backend --image=nginx --restart=Never --dry-run=client -o yaml > backend.yaml
+kubectl create -f backend.yaml
+# list env to see the env variables injected by configmap
+kubectl exec backend -it -- env
+```
