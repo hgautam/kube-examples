@@ -7,6 +7,8 @@ Make sure only the following files are in the dir:
 * redis-pod.yaml
 * kustomization.yaml
 
+* [kubectl documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-configmap-em-)
+
 ```bash
 # create a Kustomize yaml
 cat <<EOF >./kustomization.yaml
@@ -64,3 +66,4 @@ cd /etc/lala
 ls # will show var8 var9
 cat var8 # will show val8
 ```
+#### https://github.com/bmuschko/ckad-prep/blob/master/2-configuration.md#configuring-a-pod-to-use-a-configmap
