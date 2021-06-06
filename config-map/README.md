@@ -39,7 +39,7 @@ kubectl exec -it redis -- redis-cli
 kubectl delete pod redis
 kubectl delete configmap example-redis-config-dgh9dg555m
 ```
-#### Pod that uses configmap from env
+#### Create a configMap called 'options' with the value var5=val5. Create a new nginx pod that loads the value from variable 'var5' in an env variable called 'option'
 ```bash
 kubectl create cm options --from-literal=var5=val5
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > config-pod.yaml
