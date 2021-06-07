@@ -53,22 +53,26 @@ kubectl delete po nginx
 ```bash
 kubectl create cm anotherone --from-literal=var6=val6 --from-literal=var7=val7
 kubectl run --restart=Never nginx --image=nginx -o yaml --dry-run=client > env-pod.yaml
-kubectl create -f pod.yaml
+kubectl create -f env-pod.yaml
 # to validate
 kubectl exec -it nginx -- env 
 # to delete
 kubectl delete pod nginx
 kubectl delete cm anotherone
 ```
-#### Mount a Pod as volume
+#### Create a configMap 'cmvolume' with values 'var8=val8', 'var9=val9'. Load this as a volume inside an nginx pod on path '/etc/lala'. Create the pod and 'ls' into the '/etc/lala' directory.
 ```bash
 kubectl create cm cmvolume --from-literal=var8=val8 --from-literal=var9=val9
 kubectl run nginx --image=nginx --restart=Never -o yaml --dry-run=client > vol-pod.yaml
 kubectl create -f vol-pod.yaml
+# to validate
 kubectl exec -it nginx -- /bin/sh
 cd /etc/lala
 ls # will show var8 var9
 cat var8 # will show val8
+# to delete
+kubectl delete cm cmvolume
+kubectl delete po nginx
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/2-configuration.md#configuring-a-pod-to-use-a-configmap
 
