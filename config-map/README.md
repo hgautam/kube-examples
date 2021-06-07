@@ -46,6 +46,8 @@ kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > confi
 kubectl create -f config-pod.yaml
 # to validate
 kubectl exec -it nginx -- env | grep option
+kubectl delete cm options
+kubectl delete po nginx
 ```
 #### Another variant of Pod that uses configmap
 ```bash
