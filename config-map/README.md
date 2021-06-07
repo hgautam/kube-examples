@@ -49,12 +49,14 @@ kubectl exec -it nginx -- env | grep option
 kubectl delete cm options
 kubectl delete po nginx
 ```
-#### Another variant of Pod that uses configmap
+### Create a configMap 'anotherone' with values 'var6=val6', 'var7=val7'. Load this configMap as env variables into a new nginx pod
 ```bash
 kubectl create cm anotherone --from-literal=var6=val6 --from-literal=var7=val7
 kubectl run --restart=Never nginx --image=nginx -o yaml --dry-run=client > env-pod.yaml
 kubectl create -f pod.yaml
+# to validate
 kubectl exec -it nginx -- env 
+# to delete
 kubectl delete pod nginx
 kubectl delete cm anotherone
 ```
