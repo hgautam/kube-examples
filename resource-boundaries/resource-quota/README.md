@@ -2,8 +2,9 @@
 
 [Documentation reference](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/)
 
+* [Command reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-quota-em-) 
 
-* How to create a resource quota
+#### How to create a resource quota in a namespace
 ```bash
 # enable metrics server
 minikube addons eanble metrics-server
@@ -14,5 +15,5 @@ kubectl create quota my-quota --hard=requests.cpu=1,requests.memory=1Gi,limits.c
 --dry-run=client -o yaml > my-quota.yaml
 
 # apply resouce quota
-kubectl apply -f my-quota.yaml
+kubectl apply -f my-quota.yaml -n myspace
 ```
