@@ -5,7 +5,7 @@
 #### Create the YAML for an nginx pod that runs with the user ID 101
 ```bash
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > pod.yaml
-# add security context by manually editing the pod yaml - pod.yaml for details
+# add security context by manually editing the pod yaml - see pod.yaml for details
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/2-configuration.md#creating-a-security-context-for-a-pod
 ```bash
@@ -25,4 +25,10 @@ total 0
 -rw-r--r-- 1 root 3000 0 Jun  7 16:50 test.txt
 # delete pod
 kubectl delete po secured
+```
+#### Create the YAML for an nginx pod that has the capabilities "NET_ADMIN", "SYS_TIME" added on its single container
+```bash
+# create pod yaml
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > sec-cap.yaml
+# edit the yaml to add security context capabilities
 ```
