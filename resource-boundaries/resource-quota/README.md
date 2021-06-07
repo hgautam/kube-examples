@@ -5,6 +5,8 @@
 
 * How to create a resource quota
 ```bash
+# enable metrics server
+minikube addons eanble metrics-server
 # create namespace
 kubectl create ns myspace
 # create resource quota
