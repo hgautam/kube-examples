@@ -2,7 +2,11 @@
 
 [Kubernetes documentation reference](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/)
 
-Create a pod with resource limits
+* metrics-server needs to enabled to enforce requests/limits
+* request: requirement
+* limit: max capacity
+
+#### Create a pod with resource limits
 ```bash
 # enable metrics server
 minikube addons enable metrics-server
