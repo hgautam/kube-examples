@@ -22,6 +22,7 @@ ls /etc/foo
 cat username # this should print admin
 ```
 #### Mount the variable 'username' from secret mysecret2 onto a new nginx pod in env variable called 'USERNAME'
+* [https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-a-container-environment-variable-with-data-from-a-single-secret](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-a-container-environment-variable-with-data-from-a-single-secret)
 ```bash
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > pod2.yaml
 # apply the pod
