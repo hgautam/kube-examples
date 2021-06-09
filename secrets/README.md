@@ -11,6 +11,7 @@ kubectl create secret generic mysecret2 --from-file=username
 ```
 
 #### Create an nginx pod that mounts the secret mysecret2 in a volume on path /etc/foo
+* [Documentation link](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume)
 ```bash
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > pod.yaml
 # apply the pod
