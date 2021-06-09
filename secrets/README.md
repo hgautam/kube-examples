@@ -31,3 +31,22 @@ kubectl apply -f pod2.yaml
 # kubectl exec
 kubectl exec -it nginx -- env | grep USERNAME
 ```
+#### https://github.com/bmuschko/ckad-prep/blob/master/2-configuration.md#configuring-a-pod-to-use-a-secret
+
+```bash
+# Create a new Secret named db-credentials with the key/value pair db-password=passwd
+kubectl create secret generic db-credentials --from-literal=db-password=passwd
+
+# Create a Pod named backend that defines uses the Secret as environment variable named DB_PASSWORD and runs the container with the image nginx
+kubectl run backend --image=nginx --restart=Never --dry-run=client -o yaml > backend.yaml
+
+# apply the yaml
+kubectl apply -f backend.yaml
+
+# Shell into the Pod and print out the created environment variables. You should find DB_PASSWORD variable
+kubectl exec -it backend -- env
+
+# delete pod and secret
+kubectl delete po backend
+kubectl delete secret db-credentials
+```
