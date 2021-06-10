@@ -15,6 +15,8 @@ spec:
       httpGet: # add this line
         path: / #
         port: 80 #
+      initialDelaySeconds: 5
+      periodSeconds: 3
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Never
