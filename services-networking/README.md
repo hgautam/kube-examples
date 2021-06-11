@@ -50,3 +50,27 @@ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://
 kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  # This should be fine
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/6-services-and-networking.md#routing-traffic-to-pods-from-inside-and-outside-of-a-cluster
+```bash
+# Create a deployment named myapp that creates 2 replicas for Pods with the image nginx. Expose the container port 80.
+kubectl create deploy myapp --image=nginx --replicas=2 --port=80 --dry-run=client -o yaml
+# Expose the Pods so that requests can be made against the service from inside of the cluster
+kubectl expose deploy myapp --port=80 --target-port=80 --dry-run=client -o yaml
+# Create a temporary Pods using the image busybox and run a wget command against the IP of the service.
+kubectl run busybox --image=busybox -it --restart=Never -- /bin/sh
+wget myapp
+# Change the service type so that the Pods can be reached from outside of the cluster.
+kubectl edit svc myapp # change type to NodePort
+# access it from localhost. In case of minikube,
+kubectl cluster-info
+curl http://192.168.64.132:30319
+# clean up
+kubectl delete deploy myapp;kubectl delete svc myapp
+# create a nginx pod
+kubectl run nginx --image=nginx --restart=Never 
+# expose the pod on port 80
+kubectl expose pod nginx --port=80 --target-port=80 --dry-run=client -o yaml
+# create a busybox pod to access the above po
+kubectl run busybox --image=busybox --restart=Never -it --rm -- /bin/sh -c 'wget -O- http://10.110.179.42'
+# clean up
+kubectl delete po nginx; kubectl delete svc nginx
+```
