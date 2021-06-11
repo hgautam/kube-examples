@@ -9,7 +9,7 @@
 ```bash
 kubectl expose
 ```
-* [Here is the reference to the documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose)
+* [The reference to command documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose)
 
 ```bash
 # Create a pod with image nginx called nginx and expose its port 80
