@@ -99,4 +99,14 @@ Follow the steps given in the above url
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/6-services-and-networking.md#restricting-access-to-and-from-a-pod
 ```bash
+# Create the required namespace - app-stack
+kubectl create ns app-stack
+# Copy the Pod definition to the file app-stack.yaml and create all three Pods.
+kubectl apply -f app-stack.yaml
+# Create a network policy in the YAML file app-stack-network-policy.yaml.
+# The network policy should allow incoming traffic from the backend to the database but disallow incoming traffic from the frontend.
+# Incoming traffic to the database should only be allowed on TCP port 3306 and no other port.
+kubectl apply -f app-stack-network-policy.yaml
+# to validate
+kubectl get networkpolicy --namespace app-stack
 ```
