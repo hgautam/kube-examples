@@ -41,12 +41,15 @@ kubectl run busybox --image=busybox --restart=Never -it -- /bin/sh
 wget -O- foo:6262
 
 # Create an nginx deployment of 2 replicas, expose it via a ClusterIP service on port 80. Create a NetworkPolicy so that only pods with labels 'access: granted' can access the deployment and apply it
+# https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/
 kubectl create deploy nginx --image=nginx --replicas=2
+# expose the deployment
+kubectl expose deployment nginx --port=80
 # create network policy
 kubectl create -f policy.yaml
 
 # make sure that your cluster's network provider supports Network Policy (https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/#before-you-begin)
-kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2                          # This should not work. --timeout is optional here. But it helps to get answer more quickly (in seconds vs minutes)
+kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2 # This should not work. --timeout is optional here. But it helps to get answer more quickly (in seconds vs minutes)
 kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2  # This should be fine
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/6-services-and-networking.md#routing-traffic-to-pods-from-inside-and-outside-of-a-cluster
@@ -73,4 +76,7 @@ kubectl expose pod nginx --port=80 --target-port=80 --dry-run=client -o yaml
 kubectl run busybox --image=busybox --restart=Never -it --rm -- /bin/sh -c 'wget -O- http://10.110.179.42'
 # clean up
 kubectl delete po nginx; kubectl delete svc nginx
+```
+#### https://github.com/bmuschko/ckad-prep/blob/master/6-services-and-networking.md#restricting-access-to-and-from-a-pod
+```bash
 ```
