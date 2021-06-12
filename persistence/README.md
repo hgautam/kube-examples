@@ -11,6 +11,16 @@ kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml -- 
 kubeclt apply -f pod.yaml
 # Connect to the second container
 kubectl exec -it busybox -c busybox2 -- /bin/sh
+cat /etc/passwd | cut -f 1 -d ':' > /etc/foo/passwd 
+cat /etc/foo/passwd # confirm that stuff has been written successfully
+exit
+# validate on first container
+kubectl exec -it busybox -c busybox -- /bin/sh
+mount | grep foo # confirm the mounting
+cat /etc/foo/passwd
+exit
+# clean up
+kubectl delete po busybox
 ```
 #### Create a PersistentVolume of 10Gi, called 'myvolume'. Make it have accessMode of 'ReadWriteOnce' and 'ReadWriteMany', storageClassName 'normal', mounted on hostPath '/etc/foo'. Save it on pv.yaml, add it to the cluster. Show the PersistentVolumes that exist on the cluster
 ```bash
