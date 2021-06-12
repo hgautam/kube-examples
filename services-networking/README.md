@@ -77,6 +77,10 @@ kubectl run busybox --image=busybox --restart=Never -it --rm -- /bin/sh -c 'wget
 # clean up
 kubectl delete po nginx; kubectl delete svc nginx
 ```
+#### https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/
+```
+Follow the steps given in the above url
+```
 #### https://github.com/bmuschko/ckad-prep/blob/master/6-services-and-networking.md#restricting-access-to-and-from-a-pod
 ```bash
 ```
