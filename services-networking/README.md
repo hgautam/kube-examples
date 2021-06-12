@@ -39,7 +39,23 @@ kubectl get endpoints foo # you will see the IPs of the three replica nodes, lis
 # Create a temp busybox pod and connect via wget to foo service. Verify that each time there's a different hostname returned. 
 kubectl run busybox --image=busybox --restart=Never -it -- /bin/sh
 wget -O- foo:6262
-
+```
+#### Network policy requires minikube to be started with cni flag:- minikube start --network-plugin=cni --memory=4096
+```
+# valide if cni is enabled. You should see output similar to this:
+kubectl get pods --namespace=kube-system
+NAME                               READY   STATUS    RESTARTS   AGE
+cilium-9f5gh                       1/1     Running   0          9m48s
+cilium-operator-7c755f4594-s4spc   1/1     Running   0          9m48s
+coredns-74ff55c5b-k6wk7            1/1     Running   0          9m18s
+etcd-minikube                      1/1     Running   0          10m
+kube-apiserver-minikube            1/1     Running   0          10m
+kube-controller-manager-minikube   1/1     Running   0          10m
+kube-proxy-cb9gc                   1/1     Running   0          9m48s
+kube-scheduler-minikube            1/1     Running   0          10m
+storage-provisioner                1/1     Running   0          10m
+```
+```bash
 # Create an nginx deployment of 2 replicas, expose it via a ClusterIP service on port 80. Create a NetworkPolicy so that only pods with labels 'access: granted' can access the deployment and apply it
 # https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/
 kubectl create deploy nginx --image=nginx --replicas=2
