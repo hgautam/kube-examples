@@ -67,4 +67,19 @@ cat passwd
 ```
 #### https://github.com/bmuschko/ckad-prep/blob/master/7-state-persistence.md#defining-and-mounting-a-persistentvolume
 ```bash
+# Create a Persistent Volume named pv, access mode ReadWriteMany, storage class name shared, 512MB of storage capacity and the host path /data/config
+# https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume
+kubectl create -f my-pv.yaml
+# Create a Persistent Volume Claim named pvc that requests the Persistent Volume in step 1. The claim should request 256MB. Ensure that the Persistent Volume Claim is properly bound after its creation.
+# https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim
+kubectl create -f my-pvc.yaml
+# Mount the Persistent Volume Claim from a new Pod named app with the path /var/app/config. The Pod uses the image nginx.
+kubectl run app --image=nginx --restart=Never --dry-run=client -o yaml > my-nginx.yaml
+kubectl apply -f my-nginx.yaml
+# verify the mount
+kubectl exec app -it -- ls -l /var/app
+drwxr-xr-x 2 root root 4096 Jun 12 22:38 config
+
+# cleant up
+
 ```
