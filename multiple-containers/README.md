@@ -1,6 +1,7 @@
 ### Multiple containers on Pods
 
-[Kubernetes Example](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/)
+* [Kubernetes Documentation Example](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/)
+* [Logging arch - explains container patterns](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
 
 #### Create a Pod with two containers, both with image busybox and command "echo hello; sleep 3600". Connect to the second container and run 'ls'
 ```bash
