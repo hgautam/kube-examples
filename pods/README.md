@@ -3,9 +3,9 @@
 We will look at the examples of accessing a pod and getting access into a container running inside a pod.
 This section shows how to use **kubectl exec** to get a shell to a running container
 
-[Reference Kubernetes Documentation](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
-
-[Documentation on resources quotas and limits](https://kubernetes.io/docs/concepts/policy/limit-range/)
+* [Reference Kubernetes Documentation](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
+* [Documentation on resources quotas and limits](https://kubernetes.io/docs/concepts/policy/limit-range/)
+* [Kubenetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
 
 #### Generate yaml
 ```bash
