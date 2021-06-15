@@ -2,6 +2,8 @@
 
 [Kubernetes documentation reference](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 
+Security context defines privilege and access control settings for a pod or a container. And it includes a couple of options. These are Discretionary Access Control, which is about permissions that are used to access an object and Security Enhanced Linux or SE Linux which is where security labels can be applied. Notice that Security Enhanced Linux or SE Linux is something that's not available on all Linux distributions. Also running as a privileged or an unprivileged user or using the Linux capabilities which are advanced features that are exposing access to specific parts of the Linux operating system. And as an alternative to SE Linux there is an AppArmor and there is AllowPrivilegeEscalation which controls if a process can gain more privileges than its parent processes
+
 #### Create the YAML for an nginx pod that runs with the user ID 101
 ```bash
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > pod.yaml
