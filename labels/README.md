@@ -19,3 +19,13 @@ kubectl edit pod nginx1
 kubectl get po nginx1 --show-labels
 # to display new label
 ```
+### Remove a label
+```bash
+# will remove label app from nginx pod
+kubectl label po -l app app-
+```
+### apply label to an existing pod
+
+```bash
+kubectl label pods nginx app=v1
+```
