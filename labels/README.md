@@ -1,6 +1,7 @@
 ### Labels and Annotations
 
 * [Kube documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
+* [kubectl reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#label)
 
 #### Create 3 pods with names nginx1,nginx2,nginx3. All of them should have the label app=v1
 
