@@ -2,47 +2,7 @@
 * [Documentation Reference](https://kubernetes.io/docs/concepts/configuration/configmap/)
 * A configMap can be used as env variable inside a Pod
 * A configMap can be mounted as a volume inside Pod
-### Config-map example
 
-[Redis server](https://kubernetes.io/docs/tutorials/configuration/configure-redis-using-configmap/) based on a config map
-
-Make sure only the following files are in the dir:
-* redis-config
-* redis-pod.yaml
-* kustomization.yaml
-
-* [kubectl documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-configmap-em-)
-
-```bash
-# create a Kustomize yaml
-cat <<EOF >./kustomization.yaml
-configMapGenerator:
-- name: example-redis-config
-  files:
-  - redis-config
-EOF
-
-# Add redi pod resource config to the kustomization.yaml
-cat <<EOF >>./kustomization.yaml
-resources:
-- redis-pod.yaml
-EOF
-
-# Apply the kustomization directory to create both the ConfigMap and Pod objects
-kubectl apply -k .
-
-# Examine the created objects
-kubectl get -k .
-
-# Use kubectl exec to enter the pod and run the redis-cli tool to verify that the configuration was correctly applied
-kubectl exec -it redis -- redis-cli
-127.0.0.1:6379> CONFIG GET maxmemory
-127.0.0.1:6379> CONFIG GET maxmemory-policy
-
-# delete resources
-kubectl delete pod redis
-kubectl delete configmap example-redis-config-dgh9dg555m
-```
 #### Create a configMap called 'options' with the value var5=val5. Create a new nginx pod that loads the value from variable 'var5' in an env variable called 'option'
 ```bash
 kubectl create cm options --from-literal=var5=val5
@@ -90,4 +50,45 @@ kubectl run backend --image=nginx --restart=Never --dry-run=client -o yaml > bac
 kubectl create -f backend.yaml
 # list env to see the env variables injected by configmap
 kubectl exec backend -it -- env
+```
+### Config-map example
+
+[Redis server](https://kubernetes.io/docs/tutorials/configuration/configure-redis-using-configmap/) based on a config map
+
+Make sure only the following files are in the dir:
+* redis-config
+* redis-pod.yaml
+* kustomization.yaml
+
+* [kubectl documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-configmap-em-)
+
+```bash
+# create a Kustomize yaml
+cat <<EOF >./kustomization.yaml
+configMapGenerator:
+- name: example-redis-config
+  files:
+  - redis-config
+EOF
+
+# Add redi pod resource config to the kustomization.yaml
+cat <<EOF >>./kustomization.yaml
+resources:
+- redis-pod.yaml
+EOF
+
+# Apply the kustomization directory to create both the ConfigMap and Pod objects
+kubectl apply -k .
+
+# Examine the created objects
+kubectl get -k .
+
+# Use kubectl exec to enter the pod and run the redis-cli tool to verify that the configuration was correctly applied
+kubectl exec -it redis -- redis-cli
+127.0.0.1:6379> CONFIG GET maxmemory
+127.0.0.1:6379> CONFIG GET maxmemory-policy
+
+# delete resources
+kubectl delete pod redis
+kubectl delete configmap example-redis-config-dgh9dg555m
 ```
