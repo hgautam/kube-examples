@@ -1,3 +1,7 @@
+### ConfigMap 
+* [Documentation Reference](https://kubernetes.io/docs/concepts/configuration/configmap/)
+* A configMap can be used as env variable inside a Pod
+* A configMap can be mounted as a volume inside Pod
 ### Config-map example
 
 [Redis server](https://kubernetes.io/docs/tutorials/configuration/configure-redis-using-configmap/) based on a config map
