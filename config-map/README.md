@@ -1,5 +1,7 @@
 ### ConfigMap 
 * [Documentation Reference](https://kubernetes.io/docs/concepts/configuration/configmap/)
+* [Various ways to configure a configMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
+* [kubectl documentation reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-configmap-em-)
 * A configMap can be used as env variable inside a Pod
 * A configMap can be mounted as a volume inside Pod
 
@@ -59,8 +61,6 @@ Make sure only the following files are in the dir:
 * redis-config
 * redis-pod.yaml
 * kustomization.yaml
-
-* [kubectl documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-configmap-em-)
 
 ```bash
 # create a Kustomize yaml
