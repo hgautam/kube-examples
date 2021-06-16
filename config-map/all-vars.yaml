@@ -1,0 +1,20 @@
+# To get all the variables from the config-map
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - image: busybox
+    name: busybox
+    command: [ "/bin/sh", "-c", "env;sleep 300" ]
+    envFrom:
+      - configMapRef:
+          name: my-config
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
