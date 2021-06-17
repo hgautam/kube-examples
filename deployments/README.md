@@ -24,5 +24,9 @@ kubectl scale deploy nginx --replicas=5
 # you would need metrics server enabled for this to work properly
 kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
 kubectl get hpa 
+
+# clean up the env
+kubectl delete deploy nginx
+kubectl delete hpa nginx
 ```
 
