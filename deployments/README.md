@@ -1,5 +1,6 @@
 ### K8s deployment examples
-[Documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+* [Documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+* [kubectl reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-deployment-em-)
 
 #### Create a deployment with image nginx:1.7.8, called nginx, having 2 replicas, defining port 80 as the port that this container exposes
 
