@@ -4,12 +4,12 @@ metadata:
   creationTimestamp: null
   name: cjob
 spec:
-  startingDeadlineSeconds: 17
   jobTemplate:
     metadata:
       creationTimestamp: null
       name: cjob
     spec:
+      activeDeadlineSeconds: 17
       template:
         metadata:
           creationTimestamp: null
