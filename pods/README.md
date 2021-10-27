@@ -15,7 +15,7 @@ kubectl create -f pod.yaml
 ```
 #### Generate yaml to pass env command
 ```bash
-kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- env > envpod.yaml
+kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- env > busybox.yaml
 ```
 
 #### Getting access to container terminal inside a POD
