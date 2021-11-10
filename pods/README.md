@@ -21,6 +21,7 @@ kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml --c
 #### Getting access to container terminal inside a POD
 ```bash
 # apply yaml
+# this yaml does not need volume mount
 kubectl apply -f shell-demo.yaml
 kubectl get pod shell-demo
 # get shell into the container
