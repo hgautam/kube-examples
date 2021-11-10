@@ -30,3 +30,7 @@ kubectl label po -l app app-
 ```bash
 kubectl label pods nginx app=v1
 ```
+### over-write a label
+```bash
+kubectl label --overwrite pods foo status=unhealthy
+```
