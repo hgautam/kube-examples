@@ -8,6 +8,14 @@ This section shows how to use **kubectl exec** to get a shell to a running conta
 * [Documentation on resources quotas and limits](https://kubernetes.io/docs/concepts/policy/limit-range/)
 * [Kubenetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
 
+Operations that can be performed on a POD:
+* create
+* describe
+* delete
+* add/remove label
+* add/remove annotation
+* get access to shell in pod
+
 #### Generate yaml
 ```bash
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -n mynamespace -o yaml > pod.yaml
